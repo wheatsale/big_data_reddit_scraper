@@ -1,5 +1,4 @@
 use tokio;
-use serde_json;
 use reqwest::Client;
 
 mod reddit_scraper;
