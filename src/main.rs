@@ -13,11 +13,10 @@ async fn main() {
 
     for subreddit in SUBREDDITS {
         let posts = reddit_scraper::scrape_subreddit(subreddit).await;
-        let posts = serde_json::to_string(&posts).unwrap();
 
         client
             .post("https://big-data-course-project-3f321868afd2.herokuapp.com/posts")
-            .body(posts)
+            .json(&posts)
             .send()
             .await
             .unwrap();
