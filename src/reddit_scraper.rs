@@ -1,20 +1,21 @@
+use serde::{Deserialize, Serialize};
 use roux::{self, Subreddit};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Post {
-    id: String,
-    title: String,
-    content: String,
-    permalink: String,
-    subreddit: String,
-    author: String,
-    over_18: bool,
-    num_comments: u64,
-    score: f64,
-    ups: f64,
-    downs: f64,
-    created: f64,
-    comments: Vec<Comment>,
+    pub id: String,
+    pub title: String,
+    pub content: String,
+    pub permalink: String,
+    pub subreddit: String,
+    pub author: String,
+    pub over_18: bool,
+    pub num_comments: u64,
+    pub score: f64,
+    pub ups: f64,
+    pub downs: f64,
+    pub created: f64,
+    pub comments: Vec<Comment>,
 }
 
 impl Post {
@@ -68,18 +69,18 @@ impl Post {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Comment {
-    id: String,
-    post_id: String,
-    parent_id: Option<String>,
-    author: Option<String>,
-    permalink: Option<String>,
-    body_html: Option<String>,
-    over_18: Option<bool>,
-    score: Option<i32>,
-    ups: Option<i32>,
-    downs: Option<i32>,
+    pub id: String,
+    pub post_id: String,
+    pub parent_id: Option<String>,
+    pub author: Option<String>,
+    pub permalink: Option<String>,
+    pub body_html: Option<String>,
+    pub over_18: Option<bool>,
+    pub score: Option<i32>,
+    pub ups: Option<i32>,
+    pub downs: Option<i32>,
 }
 
 pub async fn scrape_subreddit(name: &str) -> Vec<Post> {
